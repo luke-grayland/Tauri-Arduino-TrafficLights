@@ -3,7 +3,7 @@ import 'react-awesome-button/dist/styles.css';
 import { invoke } from '@tauri-apps/api/core';
 import { useState } from "react";
 import LightButton from "./LightButton";
-import { ColourHexValues, ColourNames } from "./Constants.ts"
+import { ColourNames } from "./Constants.ts"
 
 function App() {
 const [greenLedOn, setGreenLedOn] = useState<boolean>(false);
