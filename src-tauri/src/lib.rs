@@ -23,6 +23,9 @@ fn send_to_arduino(port_name: &str, command: &str) -> Result<(), String> {
         .timeout(Duration::from_millis(500))
         .open();
 
+    println!("Pausing to allow port to reset...");
+    std::thread::sleep(Duration::from_millis(2000));
+
     println!("Attempting to send command: {}", command);
     match port {
         Ok(mut port) => {
