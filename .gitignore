@@ -1,0 +1,43 @@
+# Node.js / React / TypeScript
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+dist/
+build/
+*.log
+
+# Tauri
+src-tauri/target/
+src-tauri/lock
+
+# TypeScript / JS / React
+*.tsbuildinfo
+*.d.ts
+*.js.map
+*.ts.map
+
+# Rust
+target/
+Cargo.lock
+Cargo.toml.orig
+
+# IDEs / Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# dotenv environment variable files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
