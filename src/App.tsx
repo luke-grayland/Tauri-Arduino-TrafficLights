@@ -4,6 +4,7 @@ import { invoke } from '@tauri-apps/api/core';
 import { useState } from "react";
 import LightButton from "./LightButton";
 import { ColourNames } from "./Constants.ts"
+import { Provider } from "./components/ui/provider"
 
 function App() {
 const [greenLedOn, setGreenLedOn] = useState<boolean>(false);
@@ -37,14 +38,16 @@ const sendCommand = async (command: string) => {
 }
 
   return (
-    <main className="container">
-      <h1>Traffic Lights v1</h1>
+    <Provider>
+      <main className="container">
 
       <LightButton handleLedChange={handleLedChange} colourName={ColourNames.Green}/>
       <LightButton handleLedChange={handleLedChange} colourName={ColourNames.Yellow}/>
       <LightButton handleLedChange={handleLedChange} colourName={ColourNames.Red}/>
     
     </main>
+    </Provider>
+  
   );
 }
 
