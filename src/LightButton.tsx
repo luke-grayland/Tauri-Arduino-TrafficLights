@@ -3,43 +3,50 @@ import { ColourNames } from "./Constants"
 
 type LightButtonProps = {
     handleLedChange: (colour: String) => void,
-    colourName: String
+    colourName: String,
+    label: String
 }
 
 interface ButtonTheme {
-    Hex: String
+    Colour: String,
+    Text: String
 }
 
 const GetButtonThemeByColour = (colour: String): ButtonTheme => {
-
     let hex: String = '';
+    let text: String = '';
 
-    if(colour == ColourNames.Green)
-        hex = "#123"
+    switch(colour) {
+        case ColourNames.Green:
+            hex = "green"; 
+            text = "white";
+            break;
+        case ColourNames.Yellow:
+            hex = "yellow";
+            text = "black";
+            break;
+
+        case ColourNames.Red:
+            hex = "red";
+            text = "white";
+            break;
+    }
 
     return {
-        Hex: hex
+        Colour: hex,
+        Text: text
     }
 }
 
-const LightButton: React.FC<LightButtonProps> = ({handleLedChange, colourName}) => {
+const LightButton: React.FC<LightButtonProps> = ({handleLedChange, colourName, label}) => {
 
-    let x = GetButtonThemeByColour(colourName);
+    let buttonTheme: ButtonTheme = GetButtonThemeByColour(colourName);
 
     return (
         <>
-            {/* <AwesomeButton onPress={() => handleLedChange(colourName)}
-            style={{ 
-                marginLeft: '5rem', 
-                marginRight: '5rem',
-                marginTop: '0.5rem',
-                marginBottom: '0.5rem',
-                }}>
-            {colourName}
-            </AwesomeButton> */}
-
-            <Button onClick={() => handleLedChange(colourName)}>{colourName}</Button>
-
+            <Button bgColor={`${buttonTheme.Colour}`} color={`${buttonTheme.Text}`} onClick={() => handleLedChange(colourName)}>
+                {label}
+            </Button>
         </>
     )
 }

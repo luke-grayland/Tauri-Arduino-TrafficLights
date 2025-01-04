@@ -5,6 +5,8 @@ import { useState } from "react";
 import LightButton from "./LightButton";
 import { ColourNames } from "./Constants.ts"
 import { Provider } from "./components/ui/provider"
+import { Box, Flex, Text } from "@chakra-ui/react"
+import { Slider } from "./components/ui/slider.tsx";
 
 function App() {
 const [greenLedOn, setGreenLedOn] = useState<boolean>(false);
@@ -39,15 +41,30 @@ const sendCommand = async (command: string) => {
 
   return (
     <Provider>
-      <main className="container">
-
-      <LightButton handleLedChange={handleLedChange} colourName={ColourNames.Green}/>
-      <LightButton handleLedChange={handleLedChange} colourName={ColourNames.Yellow}/>
-      <LightButton handleLedChange={handleLedChange} colourName={ColourNames.Red}/>
-    
-    </main>
+      <Box as="main" className="container" height="100vh" display="flex" flexDirection="row" justifyContent="center" alignItems="center" bg="gray.50" padding="0">
+        <Box background="tomato" width="50%" height="100%" padding="4" margin="auto" >
+          <Flex direction="column" gap="4" height="100%">
+            <Text textStyle="md">Gain</Text>
+            <Slider height="200px" orientation="vertical" defaultValue={[40]} />
+          </Flex>
+        </Box>
+        <Box background="tomato" width="50%" height="100%" padding="4" margin="auto" >
+          <Flex direction="column" gap="4" height="100%">
+            <LightButton label="Input 1" handleLedChange={handleLedChange} colourName={ColourNames.Green}/>
+            <LightButton label="Input 2" handleLedChange={handleLedChange} colourName={ColourNames.Yellow}/>
+            <LightButton label="Input 3" handleLedChange={handleLedChange} colourName={ColourNames.Red}/>
+            <Text textStyle="md">LP/HP Filter</Text>
+            <Slider width="200px" defaultValue={[30, 60]} margin="auto"/>
+          </Flex>
+        </Box>
+        <Box background="tomato" width="50%" height="100%" padding="4" margin="auto" >
+          <Flex direction="column" gap="4" height="100%">
+            <Text textStyle="md">Volume</Text>
+            <Slider height="100%" orientation="vertical" defaultValue={[40]} />
+          </Flex>
+        </Box>  
+      </Box>
     </Provider>
-  
   );
 }
 
