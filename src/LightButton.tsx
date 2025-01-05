@@ -1,10 +1,10 @@
 import { Button } from "@chakra-ui/react"
 import { ButtonTheme, GetButtonThemeByColour } from "./functions/themeFunctions";
 
-type LightButtonProps = {
-    handleLedChange: (colour: String) => void,
-    colourName: String,
-    label: String
+interface LightButtonProps {
+    handleLedChange: (colour: string) => void,
+    colourName: string,
+    label: string,
 }
 
 const LightButton: React.FC<LightButtonProps> = ({handleLedChange, colourName, label}) => {

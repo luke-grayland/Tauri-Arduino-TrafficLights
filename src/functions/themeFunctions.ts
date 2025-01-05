@@ -1,13 +1,13 @@
 import { ColourNames } from ".././Constants"
 
 export interface ButtonTheme {
-    Colour: String,
-    Text: String
+    Colour: string,
+    Text: string
 }
 
-export const GetButtonThemeByColour = (colour: String): ButtonTheme => {
-    let hex: String = '';
-    let text: String = '';
+export const GetButtonThemeByColour = (colour: string): ButtonTheme => {
+    let hex: string = '';
+    let text: string = '';
 
     switch(colour) {
         case ColourNames.Green:
